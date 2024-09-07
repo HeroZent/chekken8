@@ -10,7 +10,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) === basename(__FILE__)) {
 }
 $servername = "localhost";
 $username = "root";
-$password = "1234";
+$password = "123456";
 $dbname = "chekken";
 
 // Create connection

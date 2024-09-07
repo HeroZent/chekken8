@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,10 +161,11 @@
             </header>
 
             <div class="page-heading">
-
+                <!-- 
                 <div id="spinner" class="spinner">
                     <img src="./assets/compiled/svg/grid.svg" class="me-4" style="width: 3rem" alt="audio">
                 </div>
+                -->
 
 
 
@@ -195,7 +198,7 @@
                             <h5 class="card-title">
                                 Events List:
                             </h5>
-                            <button type="button" class=" btn btn-xs btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm"><span class="fa-fw select-all fas"></span>Add Events</button>
+                            <button id="ModalButton" type="button" class=" btn btn-xs btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm"><span class="fa-fw select-all fas"></span>Add Events</button>
 
                         </div>
 
@@ -238,7 +241,12 @@
 
                                             }
                                         } else {
-                                            echo "<tr><td colspan='5'>No events found</td></tr>";
+                          
+                                            echo "<tr><td colspan='5'>No events found</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td></tr>";
                                         }
                                         $conn->close();
                                         ?>
@@ -273,7 +281,7 @@
                               
                                     <div class="form-group mandatory">
                                     <label for="date" class="form-label">Date of Event </label>
-                                        <input id="date" name="date" type="date" class="form-control flatpickr-no-config" placeholder="Select date.." data-parsley-required="true">
+                                        <input tabindex="-1" id="date" name="date" type="date" class="form-control flatpickr-no-config" placeholder="Select date.." data-parsley-required="true">
                                     </div>
                                     <div class="form-group mandatory">
                                         <label for="description" class="form-label">Description </label>
@@ -320,7 +328,7 @@
 
 <script src="assets/extensions/quill/quill.min.js"></script>
 <script src="assets/static/js/pages/quill.js"></script>
-<script>
+<!-- <script>
     window.addEventListener('load', function() {
         setTimeout(function() {
             document.getElementById('spinner').style.display = 'none';
@@ -328,8 +336,34 @@
     });
 
    
-</script>
+</script> -->
 
+<script>
+
+function GetTodayDate() {
+   var tdate = new Date();
+   var dd = tdate.getDate(); //yields day
+   var MM = tdate.getMonth(); //yields month
+   var yyyy = tdate.getFullYear(); //yields year
+   var time = tdate.getHours() + ":" + tdate.getMinutes() + ":" + tdate.getSeconds();
+   var currentDate= yyyy + "-" +dd + "-" + ( MM+1) + "-" + time;
+
+
+
+   return currentDate;
+}
+
+$("#ModalButton").click(function(){
+    $('#date').val(GetTodayDate());
+
+});
+
+$(document).ready(function(){
+    
+    })(jQuery);
+
+
+</script>
 
 </body>
 
